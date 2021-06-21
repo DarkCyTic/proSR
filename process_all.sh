@@ -8,7 +8,7 @@
 
 DATADIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-declare -a DATASETS=('BSD100' 'Celeba_HQ' 'Set14' 'Urban100')
+declare -a DATASETS=('BSD100' 'Celeba_HQ' 'Set5' 'Set14' 'Urban100')
 declare -a SAMPLING_FACTORS=('2' '2_b' '3' '3_b' '4' '4_b' '8' '8_b')
 
 for dataset in "${DATASETS[@]}"
@@ -22,22 +22,22 @@ do
     # mkdir -p $output_folder
     case $sampling_factor in
       "2" | "2_b")
-        # Command for 2x upsampling
+        # Command for 2x upsampling (modify for your own model)
         python test.py -i $input_folder --checkpoint data/checkpoints/$3.pth --scale 2 --cpu --output-dir $output_folder
         ;;
 
       "3" | "3_b")
-        # Command for 3x upsampling
+        # Command for 3x upsampling (modify for your own model)
         python test.py -i $input_folder --checkpoint data/checkpoints/$3.pth --scale 3 --cpu --output-dir $output_folder
         ;;
 
       "4" | "4_b")
-        # Command for 4x upsampling
+        # Command for 4x upsampling (modify for your own model)
         python test.py -i $input_folder --checkpoint data/checkpoints/$3.pth --scale 4 --cpu --output-dir $output_folder
         ;;
 
       "8" | "8_b")
-        # Command for 8x upsampling
+        # Command for 8x upsampling (modify for your own model)
         python test.py -i $input_folder --checkpoint data/checkpoints/$3.pth --scale 8 --cpu --output-dir $output_folder
         ;;
       *)
