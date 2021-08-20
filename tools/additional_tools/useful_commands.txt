@@ -1,0 +1,2 @@
+export PYTHONPATH=$PYTHONPATH:/Users/nnikolov/Documents/Personal/uni/TU_Berlin/proSR/lib
+python test.py -i /Users/nnikolov/Documents/Personal/uni/TU_Berlin/proSR/data/datasets/Urban100/LR_bicubic/X4/img012x4.png --checkpoint data/checkpoints/proSRGAN_x4.pth --scale 4 --cpu --output-dir ./data/exports/proSRGAN_x4
