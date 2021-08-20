@@ -1,5 +1,39 @@
 # ProSR
 
+This is a forked repository of the [original proSR implementation](https://github.com/fperazzi/proSR) provided by [fperazzi](https://github.com/fperazzi).
+
+This repository includes an additional dataset which can be found in the `additional_dataset` directory and additional tools which can be found in the `additional_tools` directory.
+
+### Instructions
+
+To run the model, either follow the original instructions provided below or the following slightly modified steps:
+
+1. `conda env create -f environment.yml`
+2. `conda activate proSR`
+
+After the environment is set up correctly, please follow the instructions provided below for training, evaluation, etc.
+
+### Adiitional Tools
+
+The additional tools can be found in the `additional_tools` directory. They include:
+
+* `additional_tools/process_all.sh` - A shell script to process multiple datasets and scaling factors sequentially. Check the file for example usage and modify as necessary.
+* `additional_tools/setup_folders.sh` - A shell script to set up the directories for the output of image from multiple datasets and scaling factors. Check the file for example usage and modify as necessary.
+* `additional_tools/scale_dir.py` - A python script to downscale a directory by a scale of 2, 4 and 8 sequentially. It expects to find an `HR/` and `LR\` subdirectories, The `HR/` subdirectory will be used as the input directory and the `LR/` subdirectory as the output directory. Check the file for example usage and modify as necessary.
+
+### Additional dataset
+
+The additional dataset contains images from 7 categories:
+* Animals
+* Art
+* Astronomy
+* Faces
+* Indoors
+* Nature
+* Urban
+
+Each subdirectory contains an `HR/` and `LR/` subdirectories.
+
 ## A Fully Progressive Approach to Single-Image Super-Resolution
 ### Co-winner of the [NTIRE Super-Resolution Challenge 2018](https://competitions.codalab.org/competitions/18015)
 
