@@ -26,11 +26,17 @@ class SimultaneousMultiscaleTrainer(object):
         # training variables
         self.input = torch.zeros(
             opt.train.batch_size, 3, 48, 48,
-            dtype=torch.float32).cuda(non_blocking=True)
+            dtype=torch.float32)
+        if torch.cuda.is_available():
+            self.input = self.input.cuda(non_blocking=True)
         self.label = torch.zeros_like(
-            self.input, dtype=torch.float32).cuda(non_blocking=True)
+            self.input, dtype=torch.float32)
+        if torch.cuda.is_available():
+            self.label = self.label.cuda(non_blocking=True)
         self.interpolated = torch.zeros_like(
-            self.label, dtype=torch.float32).cuda(non_blocking=True)
+            self.label, dtype=torch.float32)
+        if torch.cuda.is_available():
+            self.interpolated = self.interpolated.cuda(non_blocking=True)
         # for evaluation
         self.best_eval = OrderedDict(
             [('psnr_x%d' % s, 0.0) for s in opt.data.scale])
@@ -43,7 +49,9 @@ class SimultaneousMultiscaleTrainer(object):
         opt.G.max_scale = max(opt.data.scale)
 
         ######### create generator and optimizer  #########
-        self.net_G = ProSR(**opt.G).cuda()
+        self.net_G = ProSR(**opt.G)
+        if torch.cuda.is_available():
+            self.net_G = self.net_G.cuda()
         self.best_epoch = 0
 
         ######## Multi GPU #######
